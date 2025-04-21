@@ -175,7 +175,8 @@ def detect_emotion():
             gray,
             scaleFactor=1.1,  # Slightly larger scale factor for faster processing
             minNeighbors=5,
-            minSize=(30, 30),  # Minimum face size
+            minSize=(30, 30)
+        )# Minimum face size
         
         if len(faces) == 0:
             return jsonify({
