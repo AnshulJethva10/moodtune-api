@@ -22,7 +22,7 @@ classifier = load_model('Emotion_final_model.h5')
 # Define emotion classes
 class_labels = ['Angry', 'Happy', 'Neutral', 'Sad', 'Surprise']
 
-@app.route('/detect_emotion', methods=['POST'])
+@app.route('/detect_emotion', methods=['POST', 'OPTIONS'])
 def detect_emotion():
     if 'image' not in request.json:
         return jsonify({'error': 'No image provided'}), 400
