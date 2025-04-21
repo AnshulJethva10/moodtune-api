@@ -11,7 +11,7 @@ import io
 from PIL import Image
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app, origins=["*"])  # Enable CORS for all routes
 
 # Load face detector
 face_classifier = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
