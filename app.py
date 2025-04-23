@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 import tensorflow as tf
 from tensorflow.keras.models import load_model
@@ -22,7 +22,11 @@ classifier = load_model('Emotion_final_model.h5')
 # Define emotion classes
 class_labels = ['Angry', 'Happy', 'Neutral', 'Sad', 'Surprise']
 
-@app.route('/detect_emotion', methods=['POST'])
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/detect_emotion', methods=['POST', 'OPTIONS'])
 def detect_emotion():
     if request.method == 'OPTIONS':
         return '', 204  # Allow preflight to succeed
@@ -99,3 +103,4 @@ def detect_emotion():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
+
